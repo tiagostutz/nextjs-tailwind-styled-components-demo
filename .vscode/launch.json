@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Next: Node",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/next"
+        }
+    ]
+}
