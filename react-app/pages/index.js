@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Compare from "./compare";
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
         />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Home />
+      <Compare />
     </>
   );
 }

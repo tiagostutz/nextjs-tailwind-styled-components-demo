@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Fasthand
+- Font Author: Copyright (c) 2012, Danh Hong (khmertype.blogspot.com), with Reserved Font Name Fasthand
+- Font Source: http://fonts.gstatic.com/s/fasthand/v13/0yb9GDohyKTYn_ZEESkuYkw2rQg1.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL)
