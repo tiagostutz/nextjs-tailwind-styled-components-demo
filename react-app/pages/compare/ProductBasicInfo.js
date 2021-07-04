@@ -1,9 +1,14 @@
-import IconButtonDelete from "../../composite/IconButtonDelete";
-import { H3 } from "../../elements/H3.style";
-import { TextMedium } from "../../elements/TextMedium.style";
+import {
+  H3,
+  TextMedium,
+  TextLight,
+  IconButtonDelete,
+  ResilientImage,
+} from "../../lib/design-system";
+
 import { DivPadded } from "./DivPadded.style";
 
-export default function ProductDetails({ onRemove, product }) {
+export default function ProductBasicInfo({ onRemove, product }) {
   const remove = () => {
     if (onRemove) {
       onRemove(product);
@@ -14,6 +19,8 @@ export default function ProductDetails({ onRemove, product }) {
       <div className="mb-4 flex flex-row justify-end items-center">
         <IconButtonDelete onClick={() => remove()} />
       </div>
+
+      <ResilientImage src={product.productImage} />
 
       <div className="my-5">
         <H3>{product.name}</H3>

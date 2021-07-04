@@ -1,6 +1,6 @@
 import React from "react";
 import "jest-styled-components";
-import { render, screen } from "../test-utils";
+import { render, screen } from "../../../../test/test-utils";
 import { TextLight } from "../../elements/TextLight.style";
 import { hasPositionTokens } from "../tailwindTestHelper";
 

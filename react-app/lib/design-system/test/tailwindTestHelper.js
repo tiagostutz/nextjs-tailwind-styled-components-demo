@@ -1,4 +1,4 @@
-import positionTokensRegex from "./positionTokens.json";
+import positionTokensRegex from "../../../test/positionTokens.json";
 
 /**
  *

@@ -1,6 +1,6 @@
 import React from "react";
 import "jest-styled-components";
-import { render, screen } from "../test-utils";
+import { render, screen } from "../../../../test/test-utils";
 import { Table } from "../../elements/Table.style";
 import { hasPositionTokens } from "../tailwindTestHelper";
 

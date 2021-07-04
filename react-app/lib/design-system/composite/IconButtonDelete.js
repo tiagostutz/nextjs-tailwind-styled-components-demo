@@ -1,7 +1,7 @@
 import { faTrashAlt } from "@fortawesome/fontawesome-free-regular";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default ({ onClick }) => {
+export const IconButtonDelete = ({ onClick }) => {
   return (
     // add a sorouding div with padding to increase the "clickable" area
     <div onClick={onClick} className="p-1">
