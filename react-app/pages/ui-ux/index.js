@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { faTrashAlt } from "@fortawesome/fontawesome-free-regular";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Layout from "../../components/layout";
+import Content from "../../layout/content";
 
 export default function UXUICompare() {
   return (
     <>
-      <Layout>
+      <Content>
         {/* 
           Simulating this code as provided by a HTML/CSS Design System expert or even by a code generator 
           based on a given Design System. In this case, Tailwind is our Design System.
@@ -310,7 +310,7 @@ export default function UXUICompare() {
         </main>
 
         {/*  */}
-      </Layout>
+      </Content>
 
       {/* 
         This will be placed at the <head/> section of the page. 

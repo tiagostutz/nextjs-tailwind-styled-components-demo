@@ -2,7 +2,7 @@ import Head from "next/head";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
-export default function Layout({ children }) {
+export default function Content({ children }) {
   return (
     <>
       <div>

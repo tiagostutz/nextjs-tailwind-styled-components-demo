@@ -1,11 +1,10 @@
-import Head from "next/head";
-import Layout from "../../components/layout";
+import Content from "../../layout/content";
 export default function Compare() {
   return (
     <>
-      <Layout>
+      <Content>
         <div className="container mx-auto max-w-screen-lg pt-8">Hello</div>
-      </Layout>
+      </Content>
     </>
   );
 }
