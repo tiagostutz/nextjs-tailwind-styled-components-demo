@@ -10,15 +10,16 @@ describe("H2 Element", () => {
 
     const heading = screen.getByText(/Test Heading 2/i);
 
-    expect(heading).toHaveClass("text-lg text-blue-700 font-bold");
-  });
-
-  it("should render the H2 styled Component with additional CSS classes", () => {
-    render(<H2>Test Heading 2</H2>);
-
-    const heading = screen.getByText(/Test Heading 2/i);
-
+    // element components cannot have positioning style
     expect(hasPositionTokens(heading.className)).toBe(false);
-    expect(heading).toHaveClass("text-lg text-blue-700 font-bold");
+
+    // according to the Design Mock/Spec, titles are basically blue, bold and
+    // have some text sizing spec
+    expect(heading.className).toMatch(/text-blue.*/);
+    expect(heading.className).toMatch(/font-bold/);
+    expect(heading.className).toMatch(/text-.*/);
+
+    // titles dont use different font, uses global font family
+    expect(heading.className).not.toMatch(/font-(serif|sans|mono)$/);
   });
 });

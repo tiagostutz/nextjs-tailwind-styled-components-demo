@@ -10,7 +10,10 @@ describe("Table Element", () => {
 
     const table = screen.getByRole("table");
 
+    // element components cannot have positioning style
     expect(hasPositionTokens(table.className)).toBe(false);
+
+    // tables should be fixed and full for IE11 compatibility
     expect(table).toHaveClass("w-full");
     expect(table).toHaveClass("table-fixed");
   });
