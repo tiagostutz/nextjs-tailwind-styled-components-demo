@@ -19,5 +19,9 @@ describe("H1 Element", () => {
 
     expect(heading).toHaveClass("text-3xl text-blue-700 font-bold");
     expect(heading).toHaveClass("mt-4 pb-6");
+
+    expect(heading.className).toBe(
+      "flex justify-start items-center border-b border-gray-200 text-3xl text-blue-700 font-bold mt-4 pb-6"
+    );
   });
 });

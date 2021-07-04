@@ -21,5 +21,6 @@ describe("TD Element", () => {
     expect(tdElement).toHaveClass("border-gray-200");
     expect(tdElement).not.toHaveClass("border-t");
     expect(tdElement).toHaveClass("border-r border-b");
+    expect(tdElement.className).toBe("border-gray-200 border-r border-b");
   });
 });
