@@ -19,9 +19,9 @@ export default function UXUICompare() {
 
           {/* 
               As the provided Design Spec presents the data in a very "tabular way" and to have a more direct IE11 compatibility, 
-              the use of <table/> is a good choice to have this working properly
+              the use of <table/> is a good choice to have this working properly as IE11 has some issues when using flex
             */}
-          <table>
+          <table className="table-fixed w-full">
             <tbody>
               <tr>
                 <td className="pt-8 align-top pr-4 border-r border-gray-200">
