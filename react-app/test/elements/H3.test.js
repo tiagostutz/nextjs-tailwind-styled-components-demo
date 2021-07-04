@@ -1,14 +1,14 @@
 import React from "react";
 import "jest-styled-components";
 import { render, screen } from "../test-utils";
-import { H1 } from "../../elements/H1.style";
+import { H3 } from "../../elements/H3.style";
 import { hasPositionTokens } from "../tailwindTestHelper";
 
-describe("H1 Element", () => {
-  it("should render the H1 styled component with basic design spec", () => {
-    render(<H1>Test Heading</H1>);
+describe("H3 Element", () => {
+  it("should render the H3 styled Component", () => {
+    render(<H3>Test Heading 3</H3>);
 
-    const heading = screen.getByText(/Test Heading/i);
+    const heading = screen.getByText(/Test Heading 3/i);
 
     // element components cannot have positioning style
     expect(hasPositionTokens(heading.className)).toBe(false);
@@ -19,7 +19,7 @@ describe("H1 Element", () => {
     expect(heading.className).toMatch(/font-bold/);
     expect(heading.className).toMatch(/text-.*/);
 
-    // h1 titles dont use different font, uses global font family
+    // h3 titles dont use different font, uses global font family
     expect(heading.className).not.toMatch(/font-(serif|sans|mono)$/);
   });
 });

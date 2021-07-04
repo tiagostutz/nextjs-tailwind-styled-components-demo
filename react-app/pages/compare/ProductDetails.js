@@ -20,7 +20,7 @@ export default function ProductDetails({ onRemove, product }) {
       </div>
       <div className="pb-6 mb-8 border-b border-gray-200">
         <TextMedium>{product.salePrice}</TextMedium>
-        <div className="text-xs text-gray-400">per stuk / excl btw</div>
+        <TextLight>per stuk / excl btw</TextLight>
       </div>
     </DivPadded>
   );

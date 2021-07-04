@@ -1,7 +1,7 @@
 import React from "react";
 import "jest-styled-components";
 import { render, screen } from "../test-utils";
-import { H2 } from "../../elements/H2";
+import { H2 } from "../../elements/H2.style";
 import { hasPositionTokens } from "../tailwindTestHelper";
 
 describe("H2 Element", () => {
@@ -19,7 +19,7 @@ describe("H2 Element", () => {
     expect(heading.className).toMatch(/font-bold/);
     expect(heading.className).toMatch(/text-.*/);
 
-    // titles dont use different font, uses global font family
+    // h2 titles dont use different font, uses global font family
     expect(heading.className).not.toMatch(/font-(serif|sans|mono)$/);
   });
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import "jest-styled-components";
 import { render, screen } from "../test-utils";
-import { Table } from "../../elements/Table";
+import { Table } from "../../elements/Table.style";
 import { hasPositionTokens } from "../tailwindTestHelper";
 
 describe("Table Element", () => {
