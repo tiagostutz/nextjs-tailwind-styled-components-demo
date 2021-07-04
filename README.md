@@ -2,6 +2,10 @@
 
 Simple showcase on how to use NextJS with Tailwind and Styled Components.
 
+## Briefing
+
+We are considering that the UI/UX provided by the briefing should be followed with no - or minor - modifications. So, for instance, the more tabular design style used in the design yields us to use a <table/> instead of <Card/>. If the exercise asked for some alternatives on how to build this Product comparision page, maybe we could have some options using <Card>, <div> and other things, but that's not the case. So, most decisions here will be guided towards making the provided design - and spec - with most fidelity as possible.
+
 ## Getting Started
 
 ## Where the code starts?
