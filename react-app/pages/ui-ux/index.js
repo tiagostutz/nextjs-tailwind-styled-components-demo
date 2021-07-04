@@ -21,7 +21,7 @@ export default function UXUICompare() {
               As the provided Design Spec presents the data in a very "tabular way" and to have a more direct IE11 compatibility, 
               the use of <table/> is a good choice to have this working properly
             */}
-          <table className="table-auto w-full">
+          <table>
             <tbody>
               <tr>
                 <td className="pt-8 align-top pr-4 border-r border-gray-200">
@@ -60,8 +60,8 @@ export default function UXUICompare() {
                     </li>
                     <li className="my-3">
                       <div className="flex flex-row items-baseline">
-                        <input id="product3" type="checkbox" className="mr-2" />
-                        <label htmlFor="product3" className="text-sm font-bold">
+                        <input id="product4" type="checkbox" className="mr-2" />
+                        <label htmlFor="product4" className="text-sm font-bold">
                           O-ring EPDM 70 shore - Voedsel (Binnen Ø=2.06 Snoer
                           Ø=2.62; AS568- 103)
                         </label>

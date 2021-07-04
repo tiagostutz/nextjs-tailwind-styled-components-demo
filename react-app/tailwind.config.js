@@ -18,4 +18,10 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  corePlugins: {
+    // For IE11 compatibility, remove opacity, using RGB instead of RGBA (original)
+    backgroundOpacity: false,
+    borderOpacity: false,
+    textOpacity: false,
+  },
 };
