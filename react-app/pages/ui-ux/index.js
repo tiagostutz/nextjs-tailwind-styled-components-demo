@@ -13,7 +13,7 @@ export default function UXUICompare() {
         */}
 
         <main className="container mx-auto max-w-screen-lg pt-8">
-          <h1 className="flex justify-start items-center mt-4 text-3xl border-b border-gray-200 pb-6">
+          <h1 className="flex justify-start items-center mt-4 text-3xl border-b border-gray-200 pb-6 text-blue-700">
             4 producten vergelijken
           </h1>
 
@@ -22,101 +22,111 @@ export default function UXUICompare() {
               the use of <table/> is a good choice to have this working properly
             */}
           <table className="table-auto w-full">
-            <thead>
-              <tr>
-                <th className="px-4 text-left border-r border-gray-200">
-                  <h2 className="text-lg text-blue-700 font-bold">
-                    Je selectie
-                  </h2>
-                </th>
-                <th className="px-4">
-                  <div className="flex justify-end items-center">
-                    <FontAwesomeIcon icon={faTrashAlt} width={16} />
-                  </div>
-                </th>
-                <th className="px-4">
-                  <div className="flex justify-end items-center">
-                    <FontAwesomeIcon icon={faTrashAlt} width={16} />
-                  </div>
-                </th>
-                <th className="px-4">
-                  <div className="flex justify-end items-center">
-                    <FontAwesomeIcon icon={faTrashAlt} width={16} />
-                  </div>
-                </th>
-                <th className="px-4">
-                  <div className="flex justify-end items-center">
-                    <FontAwesomeIcon icon={faTrashAlt} width={16} />
-                  </div>
-                </th>
-              </tr>
-            </thead>
             <tbody>
               <tr>
-                <td className="px-4 border-r border-gray-200">
+                <td className="pt-8 pr-4 border-r border-gray-200">
                   <ul>
                     <li>
-                      <input type="checkbox" className="mr-2" />
-                      <strong>
-                        O-ring EPDM 70 shore - Voedsel (Binnen Ø=1.25 Snoer
-                        Ø=2.62; AS568- 102)
-                      </strong>
+                      <h2 className="mb-2 text-lg text-blue-700 font-bold">
+                        Je selectie
+                      </h2>
                     </li>
-                    <li>
-                      <input type="checkbox" className="mr-2" />
-                      <strong>
-                        O-ring EPDM 70 shore - Voedsel (Binnen Ø=1.78 Snoer
-                        Ø=1.78; AS568- 004)
-                      </strong>
+                    <li className="my-3">
+                      <div className="flex flex-row items-baseline">
+                        <input id="product1" type="checkbox" className="mr-2" />
+                        <label htmlFor="product1" className="text-sm font-bold">
+                          O-ring EPDM 70 shore - Voedsel (Binnen Ø=1.25 Snoer
+                          Ø=2.62; AS568- 102)
+                        </label>
+                      </div>
                     </li>
-                    <li>
-                      <input type="checkbox" className="mr-2" />
-                      <strong>
-                        O-ring EPDM 70 shore - Voedsel (Binnen Ø=2.9 Snoer
-                        Ø=1.78; AS568- 006)
-                      </strong>
+                    <li className="my-3">
+                      <div className="flex flex-row items-baseline">
+                        <input id="product2" type="checkbox" className="mr-2" />
+                        <label htmlFor="product2" className="text-sm font-bold">
+                          O-ring EPDM 70 shore - Voedsel (Binnen Ø=1.78 Snoer
+                          Ø=1.78; AS568- 004)
+                        </label>
+                      </div>
+                    </li>
+                    <li className="my-3">
+                      <div className="flex flex-row items-baseline">
+                        <input id="product3" type="checkbox" className="mr-2" />
+                        <label htmlFor="product3" className="text-sm font-bold">
+                          O-ring EPDM 70 shore - Voedsel (Binnen Ø=2.06 Snoer
+                          Ø=2.62; AS568- 103)
+                        </label>
+                      </div>
                     </li>
                   </ul>
                 </td>
-                <td className="px-4 text-left">
+                <td className="pt-8 px-4 text-left">
+                  <div className="mb-4 flex flex-row justify-end items-center">
+                    <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      width={16}
+                      className="text-blue-700"
+                    />
+                  </div>
                   <div>
                     <img src="https://eriksdigitalcdn.azureedge.net/shop/detail/hlr-system/maagtechnic/converted/preview/0100610a-2.jpg" />
                   </div>
-                  <h3>
-                    <strong className="text-blue-700 font-bold">
+                  <h3 className="my-5">
+                    <strong className="text-blue-600 font-bold">
                       O-ring EPDM 70 shore - Voedsel (Binnen Ø=1.25 Snoer
                       Ø=2.62; AS568- 102)
                     </strong>
                   </h3>
                 </td>
-                <td className="px-4 text-left">
+                <td className="pt-8 px-4 text-left">
+                  <div className="mb-4 flex flex-row justify-end items-center">
+                    <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      width={16}
+                      className="text-blue-700"
+                    />
+                  </div>
                   <div>
                     <img src="https://eriksdigitalcdn.azureedge.net/shop/detail/hlr-system/maagtechnic/converted/preview/0100610a-2.jpg" />
                   </div>
-                  <h3>
-                    <strong className="text-blue-700  font-bold">
+                  <h3 className="my-5">
+                    <strong className="text-blue-600 font-bold">
                       O-ring EPDM 70 shore - Voedsel (Binnen Ø=1.25 Snoer
                       Ø=2.62; AS568- 102)
                     </strong>
                   </h3>
                 </td>
-                <td className="px-4 text-left">
+                <td className="pt-8 px-4 text-left">
+                  <div className="mb-4 flex flex-row justify-end items-center">
+                    <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      width={16}
+                      className="text-blue-700"
+                    />
+                  </div>
                   <div>
                     <img src="https://eriksdigitalcdn.azureedge.net/shop/detail/hlr-system/maagtechnic/converted/preview/0100610a-2.jpg" />
                   </div>
-                  <h3>
-                    <strong className="text-blue-700  font-bold">
+                  <h3 className="my-5">
+                    <strong className="text-blue-600 font-bold">
                       O-ring EPDM 70 shore - Voedsel (Binnen Ø=1.25 Snoer
                       Ø=2.62; AS568- 102)
                     </strong>
                   </h3>
                 </td>
-                <td className="px-4 text-left">
+                <td className="pt-8 px-4 text-left">
+                  <div className="mb-4 flex flex-row justify-end items-center">
+                    <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      width={16}
+                      className="text-blue-700"
+                    />
+                  </div>
                   <div>
                     <img src="https://eriksdigitalcdn.azureedge.net/shop/detail/hlr-system/maagtechnic/converted/preview/0100610a-2.jpg" />
                   </div>
-                  <h3>
-                    <strong className="text-blue-700  font-bold">
+                  <h3 className="my-5">
+                    <strong className="text-blue-600 font-bold">
                       O-ring EPDM 70 shore - Voedsel (Binnen Ø=1.25 Snoer
                       Ø=2.62; AS568- 102)
                     </strong>

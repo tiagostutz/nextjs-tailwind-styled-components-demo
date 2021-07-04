@@ -5,6 +5,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontSize: {
+        base: ".875rem",
+      },
+
       fontFamily: {
         sans: ["Nunito", ...defaultTheme.fontFamily.sans],
       },

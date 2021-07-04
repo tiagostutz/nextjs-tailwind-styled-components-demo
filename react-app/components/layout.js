@@ -55,7 +55,7 @@ export default function Layout({ children }) {
 
         {/*  NextJS will inline this font, helping to prevent First Contentful Paint (FCP) */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Nunito"
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@700"
           rel="stylesheet"
         />
       </Head>
