@@ -3,6 +3,7 @@ import "jest-styled-components";
 import { render, screen } from "../test-utils";
 import { TD } from "../../elements/TD";
 import { Table } from "../../elements/Table";
+import { hasPositionTokens } from "../tailwindTestHelper";
 
 describe("TD Element", () => {
   it("should render the TD styled Component", () => {
@@ -10,7 +11,7 @@ describe("TD Element", () => {
       <Table>
         <tbody>
           <tr>
-            <TD className="border-r border-b"></TD>
+            <TD></TD>
           </tr>
         </tbody>
       </Table>
@@ -18,9 +19,8 @@ describe("TD Element", () => {
 
     const tdElement = screen.getByRole("cell");
 
+    expect(hasPositionTokens(tdElement.className)).toBe(false);
     expect(tdElement).toHaveClass("border-gray-200");
     expect(tdElement).not.toHaveClass("border-t");
-    expect(tdElement).toHaveClass("border-r border-b");
-    expect(tdElement.className).toBe("border-gray-200 border-r border-b");
   });
 });
