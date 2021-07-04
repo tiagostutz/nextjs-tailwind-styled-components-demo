@@ -17,11 +17,11 @@ export default function UXUICompare() {
         </h1>
 
         {/* 
-              As the provided Design Spec presents the data in a very "tabular way" and to have a more direct IE11 compatibility, 
-              the use of <table/> is a good choice to have this working properly as IE11 has some issues when using flex.
-              That's a reason also for not using a Grid System here, because we have few elements Grid positioned. The main
-              content here is tabular positioned.
-            */}
+          As the provided Design Spec presents the data in a very "tabular way" and to have a more direct IE11 compatibility, 
+          the use of <table/> is a good choice to have this working properly as IE11 has some issues when using flex.
+          That's a reason also for not using a Grid System here, because we have few elements Grid positioned. The main
+          content here is tabular positioned.
+        */}
         <table className="table-fixed w-full">
           <tbody>
             <tr>
