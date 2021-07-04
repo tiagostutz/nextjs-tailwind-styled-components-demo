@@ -12,14 +12,16 @@ export default function UXUICompare() {
           based on a given Design System. In this case, Tailwind is our Design System.
         */}
 
-        <main className="container mx-auto max-w-screen-lg pt-8">
+        <main className="container mx-auto max-w-screen-lg pt-8 px-4">
           <h1 className="flex justify-start items-center mt-4 border-b border-gray-200 pb-6 text-3xl text-blue-700 font-bold">
             4 producten vergelijken
           </h1>
 
           {/* 
               As the provided Design Spec presents the data in a very "tabular way" and to have a more direct IE11 compatibility, 
-              the use of <table/> is a good choice to have this working properly as IE11 has some issues when using flex
+              the use of <table/> is a good choice to have this working properly as IE11 has some issues when using flex.
+              That's a reason also for not using a Grid System here, because we have few elements Grid positioned. The main
+              content here is tabular positioned.
             */}
           <table className="table-fixed w-full">
             <tbody>
