@@ -3,13 +3,20 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 
 export default function Content({ children }) {
+  {
+    /* 
+    We don't need this to be a styled-component because we have a bit more of logic (Header, composition of layout)
+    and this component is not being configured, modified or mixed as this is the main layout structure
+  */
+  }
   return (
     <>
-      <div>
-        <Navbar />
-        <div>{children}</div>
-        <Footer />
-      </div>
+      <Navbar />
+      <main className="container mx-auto max-w-screen-lg pt-8 px-4">
+        {/* Main content */}
+        {children}
+      </main>
+      <Footer />
 
       {/* 
         This will be placed at the <head/> section of the page. 
