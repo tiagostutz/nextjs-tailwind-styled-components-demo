@@ -15,20 +15,27 @@ export default function ProductBasicInfo({ onRemove, product }) {
     }
   };
   return (
-    <DivPadded>
+    <div>
       <div className="mb-4 flex flex-row justify-end items-center">
         <IconButtonDelete onClick={() => remove()} />
       </div>
-
-      <ResilientImage src={product.productImage} />
-
+      <div className="flex justify-center items-center">
+        <ResilientImage
+          src={product.productImage}
+          width="100"
+          height="100"
+          alt="Product illustrative image"
+        />
+      </div>
       <div className="my-5">
         <H3>{product.name}</H3>
       </div>
       <div className="pb-6 mb-8 border-b border-gray-200">
         <TextMedium>{product.salePrice}</TextMedium>
-        <TextLight>per stuk / excl btw</TextLight>
+        <div>
+          <TextLight>per stuk / excl btw</TextLight>
+        </div>
       </div>
-    </DivPadded>
+    </div>
   );
 }

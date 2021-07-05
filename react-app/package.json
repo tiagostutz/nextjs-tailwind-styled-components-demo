@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_PUBLIC_PRODUCTS_ENDPOINT=http://5c35e7f96fc11c0014d32fcd.mockapi.io/compare/products next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest --watchAll"

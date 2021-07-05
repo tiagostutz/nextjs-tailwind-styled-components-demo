@@ -3,6 +3,21 @@ import { faTrashAlt } from "@fortawesome/fontawesome-free-regular";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Content from "../../layout/content";
 
+/**
+ * This is a page that has the Product Comparision page coded
+ * in pure HTML/CSS using the Design System tokens.
+ *
+ * This page is just used for developmental purpose. The actual React components
+ * will be identified and broken into isolated and reusable ones in its respective
+ * structure in the project. Good part of the code here will be used in this process
+ * of coding the React/Styled-Components Components
+ *
+ * This design gives a clear view of repetition of structures, spacing, semantic elements, etc
+ * and can be done by someone that doesn't necessarily is a React dev, because it is a
+ * pure HTML/CSS Design System work.
+ *
+ * @returns UXUICompare React component
+ */
 export default function UXUICompare() {
   return (
     <>

@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   H1,
   H2,
   Table,
-  TD,
   TDTopAligned,
   TDLined,
   TextSmall,
+  ErrorMessage,
   ResilientImage,
   CheckboxSideText,
 } from "../../lib/design-system";
@@ -15,12 +15,55 @@ import Content from "../../layout/content";
 import { DivPadded } from "./DivPadded.style";
 
 import ProductBasicInfo from "./ProductBasicInfo";
+
+import env from "../../environment";
+
 /**
+ *
+ * This is the Main (root) component of the Product Comparision.
+ * It has the logic to fetch the data, transform it in a tabular manner
+ * and present it as a table of comparision with the option to select/remove
+ * which Products will be presented in this comparision table
  *
  * @returns ProductCompare React component
  */
 export default function ProductCompare() {
+  /**
+   * Fetched products enhanced with some attributes as the flag indicating
+   * whether they are selected to be presented in the comparision table
+   */
   const [productsSelection, setProductsSelection] = useState([]);
+
+  const [error, setError] = useState();
+
+  /**
+   * Initial load of the component. Fetch the products.
+   */
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const resp = await fetch(env.productsEndpoint);
+        if (resp.status === 200) {
+          const productsJsonResp = await resp.json();
+          const productsReveivedEnhanced = productsJsonResp.products.map(
+            (prod) => ({
+              ...prod,
+              isSelected: false,
+            })
+          );
+          setProductsSelection(productsReveivedEnhanced);
+        } else if (resp.status === 404) {
+          setError("No products found.");
+        } else {
+          setError("Error fetching the products");
+        }
+      } catch (error) {
+        console.error(error);
+        setError("Error fetching and transforming the products");
+      }
+    };
+    loadData();
+  }, []);
 
   // -------
   // Ideally, those functions could be somewhere else, but
@@ -33,7 +76,14 @@ export default function ProductCompare() {
   const selectProduct = (sku) => {};
 
   /** toggle (add/remove) a product from the comparision selection */
-  const toggleProductSelected = (sku) => {};
+  const toggleProductSelected = (sku) => {
+    const product = productsSelection.find((p) => p.sku === sku);
+    if (product.isSelected) {
+      unselectProduct(sku);
+    } else {
+      selectProduct(sku);
+    }
+  };
 
   /**
    * This transforms the attributes of the products in a tabular way
@@ -61,6 +111,7 @@ export default function ProductCompare() {
   return (
     <>
       <Content>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <H1 className="mt-4 pb-6">{title}</H1>
 
         {/* Product Comparision Table */}
@@ -89,14 +140,14 @@ export default function ProductCompare() {
 
               {/* Product basic info (image, name and price) */}
               {productsSelection.map((product) => (
-                <TD>
+                <TDTopAligned>
                   <DivPadded>
                     <ProductBasicInfo
                       product={product}
                       onRemove={() => unselectProduct(product.sku)}
                     />
                   </DivPadded>
-                </TD>
+                </TDTopAligned>
               ))}
             </tr>
 
@@ -105,7 +156,7 @@ export default function ProductCompare() {
               {badges.map((bd) => (
                 <TDLined>
                   <div className="flex flex-row">
-                    <ResilientImage src={bd.url} width="32" />
+                    <ResilientImage src={bd.url} width="32" alt="Badge" />
                   </div>
                 </TDLined>
               ))}

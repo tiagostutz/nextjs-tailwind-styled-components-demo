@@ -6,6 +6,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import env from "../../../environment";
 
 // This cache is used to register what is the current image for a given resource,
 // whether is the actual image URL (if valid) or a placeholder
@@ -38,18 +39,17 @@ const cache = {
 
 export const ResilientImage = ({
   src,
-  width,
-  height,
+  width = 32,
+  height = 32,
+  alt,
   cacheExpiration = CACHE_DEFAULT_EXPIRATION,
 }) => {
-  const [imageSrc, setImageSrc] = useState(
-    "/unavailable-image-placeholder.png"
-  ); // in case the image is not available, put a placeholder
+  const [imageSrc, setImageSrc] = useState(env.unavailableImageURL); // in case the image is not available, put a placeholder
 
   useEffect(() => {
     const checkImage = async () => {
       const cacheEntry = cache.get(src);
-      let resolvedImageSrc = "/unavailable-image-placeholder.png";
+      let resolvedImageSrc = env.unavailableImageURL;
       if (!cacheEntry) {
         try {
           const fetchResult = await fetch(src);
@@ -73,7 +73,13 @@ export const ResilientImage = ({
 
   // Finally render the image with a valid URL, either the actual `src` or with placeholder
   return (
-    <Image src={imageSrc} loader={myLoader} width={width} height={height} />
+    <Image
+      src={imageSrc}
+      loader={myLoader}
+      width={width}
+      height={height}
+      alt={alt}
+    />
   );
 };
 
