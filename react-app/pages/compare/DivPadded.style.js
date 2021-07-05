@@ -1,7 +1,12 @@
 import tw from "tailwind-styled-components";
 
-export const DivPadded = tw.div`
+export const DivTopPadded = tw.div`
     pt-8
+    px-4
+    text-left
+`;
+
+export const DivHorizontalPadded = tw.div`
     px-4
     text-left
 `;

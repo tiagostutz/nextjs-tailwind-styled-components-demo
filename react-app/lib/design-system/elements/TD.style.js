@@ -12,5 +12,5 @@ export const TDTopAligned = tw(TD)`
 export const TDLined = tw(TD)`
     border-r
     border-b
-    ${(props) => (props.highlighted ? "bg-gray-200" : "")}
+    ${(props) => (props.highlighted ? "bg-gray-100" : "")}
 `;

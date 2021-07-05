@@ -6,13 +6,14 @@ import {
   TDTopAligned,
   TDLined,
   TextSmall,
+  TextSmallBold,
   ErrorMessage,
   ResilientImage,
   CheckboxSideText,
 } from "../../lib/design-system";
 
 import Content from "../../layout/content";
-import { DivPadded } from "./DivPadded.style";
+import { DivTopPadded, DivHorizontalPadded } from "./DivPadded.style";
 
 import ProductBasicInfo from "./ProductBasicInfo";
 
@@ -72,13 +73,16 @@ export default function ProductCompare() {
             <tr>
               {/* Left most column with the Product selection checkboxes */}
               <TDTopAligned className="border-r">
-                <DivPadded>
+                <DivTopPadded>
                   <ul>
                     <li>
                       <H2>Je selectie</H2>
                     </li>
                     {productsSelection.map((product) => (
-                      <li className="my-3 flex flex-row items-baseline">
+                      <li
+                        key={product.sku}
+                        className="my-3 flex flex-row items-baseline"
+                      >
                         <CheckboxSideText
                           id={product.sku}
                           checked={product.isSelected}
@@ -88,47 +92,74 @@ export default function ProductCompare() {
                       </li>
                     ))}
                   </ul>
-                </DivPadded>
+                </DivTopPadded>
               </TDTopAligned>
 
               {/* Product basic info (image, name and price) */}
               {filteredProducts.map((product) => (
-                <TDTopAligned>
-                  <DivPadded>
+                <TDTopAligned key={product.sku}>
+                  <DivTopPadded>
                     <ProductBasicInfo
                       product={product}
                       onRemove={() => unselectProduct(product)}
                     />
-                  </DivPadded>
+                  </DivTopPadded>
                 </TDTopAligned>
               ))}
             </tr>
 
             {/* After the product basic info, comes the Badges. */}
             <tr>
-              {badges.map((bd) => (
-                <TDLined>
-                  <div className="flex flex-row">
-                    <ResilientImage src={bd.url} width="32" alt="Badge" />
-                  </div>
-                </TDLined>
-              ))}
+              {/* Quality (badge) title */}
+              <TDLined>
+                <DivHorizontalPadded>
+                  <TextSmall>Keurmerk</TextSmall>
+                </DivHorizontalPadded>
+              </TDLined>
+
+              {/* Filter only the badges from the selected products */}
+              {badges
+                .filter((val) => val.isSelected)
+                .map((bd, idx) => (
+                  <TDLined key={idx}>
+                    <div className="flex flex-row justify-start items-center">
+                      {bd.urls.map((url, idx3) => (
+                        <div className="mr-2">
+                          {/* Give some space between the badges */}
+                          <ResilientImage
+                            key={idx3}
+                            src={url}
+                            width="32"
+                            height="32"
+                            alt="Badge"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </TDLined>
+                ))}
             </tr>
 
             {/* Product attributes in name ascending order table comparision */}
-            {attributesValues.map((row) => (
-              <tr>
+            {withHasDifference(attributesValues).map((row, idx) => (
+              <tr key={idx}>
                 {/* The "name" attribute must be the first column in the row*/}
                 <TDLined highlighted={row.hasDifference}>
-                  <TextSmall>{row.name}</TextSmall>
+                  <DivHorizontalPadded>
+                    <TextSmall>{row.name}</TextSmall>
+                  </DivHorizontalPadded>
                 </TDLined>
 
-                {/* The other attributes values */}
-                {row.attributeValues.map((attrVal) => (
-                  <TDLined highlighted={row.hasDifference}>
-                    <TextSmallBold>{attrVal}</TextSmallBold>
-                  </TDLined>
-                ))}
+                {/* Filter to present just the values from the selected products */}
+                {row.values
+                  .filter((val) => val.isSelected)
+                  .map((attrVal) => (
+                    <TDLined key={attrVal.sku} highlighted={row.hasDifference}>
+                      <DivHorizontalPadded>
+                        <TextSmallBold>{attrVal.value}</TextSmallBold>
+                      </DivHorizontalPadded>
+                    </TDLined>
+                  ))}
               </tr>
             ))}
           </tbody>
@@ -137,3 +168,26 @@ export default function ProductCompare() {
     </>
   );
 }
+
+/**
+ * Builds an enhanced attributeValues indicating whether there are some difference between the values
+ * of the SELECTED products
+ *
+ * @param {Array} attributesValues array with the attribute values transformed into tabular
+ */
+const withHasDifference = (attributesValues) => {
+  // return the original object + the hasDifference attribute
+  // to evaluate the hasDifferece, we filter for the selected products,
+  // which are being compared, and check, attribute by attribute whether
+  // there is at least one product with the value different from the first product
+  // because if there is, then there are differences between the respective attribute value
+  // among the selected products.
+  const enhancedAttributeValues = attributesValues.map((attrVal) => ({
+    ...attrVal,
+    hasDifference: attrVal.values
+      .filter((val) => val.isSelected)
+      .find((v) => v.value !== attrVal.values[0].value),
+  }));
+
+  return enhancedAttributeValues;
+};

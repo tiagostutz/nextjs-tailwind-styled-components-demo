@@ -20,7 +20,7 @@ export const CheckboxSideText = ({ id, label, checked = false, onToggle }) => {
     <div className="flex flex-row items-baseline">
       <input
         id={id}
-        onClick={() => toggle()}
+        onChange={() => toggle()}
         type="checkbox"
         checked={isChecked}
         className="mr-2"
