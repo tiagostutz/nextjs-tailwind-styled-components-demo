@@ -70,18 +70,24 @@ export default function ProductCompare() {
   // as this is a simple component with just a few actions we can leave it here
 
   /** removes a product from the comparision selection */
-  const unselectProduct = (sku) => {};
+  const unselectProduct = (product) => {
+    product.isSelected = false;
+    setProductsSelection([...productsSelection]);
+  };
 
   /** removes a product from the comparision selection */
-  const selectProduct = (sku) => {};
+  const selectProduct = (product) => {
+    product.isSelected = true;
+    setProductsSelection([...productsSelection]);
+  };
 
   /** toggle (add/remove) a product from the comparision selection */
   const toggleProductSelected = (sku) => {
     const product = productsSelection.find((p) => p.sku === sku);
     if (product.isSelected) {
-      unselectProduct(sku);
+      unselectProduct(product);
     } else {
-      selectProduct(sku);
+      selectProduct(product);
     }
   };
 
@@ -101,11 +107,16 @@ export default function ProductCompare() {
    */
   const badges = [];
 
+  // filter just the products that has been selected (flag isSelected)
+  const filteredProducts = productsSelection.filter(
+    (prodSel) => prodSel.isSelected
+  );
+
   // If no product is selected, change the title to suggest the user
   // to start choosing products to compare
   const title =
-    productsSelection.length > 0
-      ? productsSelection.length + " " + "Producten Vergelijken"
+    filteredProducts.length > 0
+      ? filteredProducts.length + " " + "Producten Vergelijken"
       : "Selecteer de producten";
 
   return (
@@ -129,6 +140,7 @@ export default function ProductCompare() {
                       <li className="my-3 flex flex-row items-baseline">
                         <CheckboxSideText
                           id={product.sku}
+                          checked={product.isSelected}
                           label={product.name}
                           onToggle={() => toggleProductSelected(product.sku)}
                         />
@@ -139,12 +151,12 @@ export default function ProductCompare() {
               </TDTopAligned>
 
               {/* Product basic info (image, name and price) */}
-              {productsSelection.map((product) => (
+              {filteredProducts.map((product) => (
                 <TDTopAligned>
                   <DivPadded>
                     <ProductBasicInfo
                       product={product}
-                      onRemove={() => unselectProduct(product.sku)}
+                      onRemove={() => unselectProduct(product)}
                     />
                   </DivPadded>
                 </TDTopAligned>

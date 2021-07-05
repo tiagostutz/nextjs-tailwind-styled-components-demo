@@ -22,8 +22,8 @@ export default function ProductBasicInfo({ onRemove, product }) {
       <div className="flex justify-center items-center">
         <ResilientImage
           src={product.productImage}
-          width="100"
-          height="100"
+          height="140"
+          width="130"
           alt="Product illustrative image"
         />
       </div>

@@ -39,8 +39,8 @@ const cache = {
 
 export const ResilientImage = ({
   src,
-  width = 32,
-  height = 32,
+  width,
+  height,
   alt,
   cacheExpiration = CACHE_DEFAULT_EXPIRATION,
 }) => {

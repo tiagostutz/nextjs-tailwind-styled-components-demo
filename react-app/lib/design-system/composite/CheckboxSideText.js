@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextSmall, TextSmallBold } from "../elements/TextSmall.style";
 
 export const CheckboxSideText = ({ id, label, checked = false, onToggle }) => {
@@ -12,12 +12,17 @@ export const CheckboxSideText = ({ id, label, checked = false, onToggle }) => {
     setIsChecked(newValue);
   };
 
+  useEffect(() => {
+    setIsChecked(checked);
+  }, [checked]);
+
   return (
     <div className="flex flex-row items-baseline">
       <input
         id={id}
         onClick={() => toggle()}
         type="checkbox"
+        checked={isChecked}
         className="mr-2"
       />
       <label htmlFor={id}>
