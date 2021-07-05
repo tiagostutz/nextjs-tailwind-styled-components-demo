@@ -1,7 +1,14 @@
 import tw from "tailwind-styled-components";
 
-export const TD = tw.td`
+const TDBase = tw.td`
     border-gray-200
+`;
+
+export const TD = tw(
+  ({ border, borderLeft, borderTop, borderRight, borderBottom, ...props }) => (
+    <TDBase {...props} />
+  )
+)`
     ${(props) => (props.border ? "border" : "")}
     ${(props) => (props.borderRight ? "border-r" : "")}
     ${(props) => (props.borderLeft ? "border-l" : "")}

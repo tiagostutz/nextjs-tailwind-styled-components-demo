@@ -40,6 +40,10 @@ Router is provided out of the box by React Router. The convention is that the pa
 
 As the interaction format would change 
 
+## Caching
+
+Simple cache has 5kb size. Node-cache has 55kb.
+
 ## Design Decisions
 
 ### About Design System

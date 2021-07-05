@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import env from "../../environment";
 import ignoredAttributes from "../../ignoredAttributes.json";
+import { productCache } from "../cache";
 
 /**
  * Builds an enhanced attributeValues indicating whether there are some difference between the values
@@ -45,22 +46,29 @@ export const useProductComparision = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const resp = await fetch(env.productsEndpoint);
-        if (resp.status === 200) {
-          const productsJsonResp = await resp.json();
-          // add isSelected flag to enhance the object with this property to
-          // be used to indicate whether the product is selected for comparision or not
-          const productsReveivedEnhanced = productsJsonResp.products.map(
-            (prod) => ({
-              ...prod,
-              isSelected: false,
-            })
-          );
-          setAllProducts(productsReveivedEnhanced);
-        } else if (resp.status === 404) {
-          setError("No products found.");
+        // we first try to get the cached version
+        const cachedProducts = productCache.get("all");
+        if (!cachedProducts) {
+          const resp = await fetch(env.productsEndpoint);
+          if (resp.status === 200) {
+            const productsJsonResp = await resp.json();
+            // add isSelected flag to enhance the object with this property to
+            // be used to indicate whether the product is selected for comparision or not
+            const productsReveivedEnhanced = productsJsonResp.products.map(
+              (prod) => ({
+                ...prod,
+                isSelected: false,
+              })
+            );
+            productCache.set("all", productsReveivedEnhanced);
+            setAllProducts(productsReveivedEnhanced);
+          } else if (resp.status === 404) {
+            setError("No products found.");
+          } else {
+            setError("Error fetching the products");
+          }
         } else {
-          setError("Error fetching the products");
+          setAllProducts(cachedProducts);
         }
       } catch (error) {
         console.error(error);
@@ -148,7 +156,6 @@ export const useProductComparision = () => {
       sku: ps.sku,
       isSelected: ps.isSelected,
     }));
-    console.log(badges);
 
     // filter just the products that has been selected (flag isSelected)
     // to present in the comparision table

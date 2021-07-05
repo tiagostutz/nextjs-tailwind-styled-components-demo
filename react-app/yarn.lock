@@ -5086,6 +5086,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+simple.cache@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/simple.cache/-/simple.cache-2.0.4.tgz#bcaaff1c948e8a24cbe7e943e07d5b238586c6c2"
+  integrity sha512-MlxoSKP+W0x3VmpKEf0NnsAsP6oa6wSGTI6jCYLFoi4FFgmtaTV1YiYdmplk7k2JQ1CK00zkxPaq1l2rQr6tKg==
+
 sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
