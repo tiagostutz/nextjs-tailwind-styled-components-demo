@@ -15,7 +15,6 @@ export const TD = tw(
     ${(props) => (props.borderTop ? "border-t" : "")}
     ${(props) => (props.borderBottom ? "border-b" : "")}
 `;
-
 export const TDTopAligned = tw(TD)`
     align-top     
 `;

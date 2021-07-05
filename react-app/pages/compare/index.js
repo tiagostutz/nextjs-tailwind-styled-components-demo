@@ -9,28 +9,17 @@ import ComparisionTableMobile from "./ComparisionTableMobile";
 /**
  *
  * This is the Main (root) component of the Product Comparision.
- * It has the logic to fetch the data, transform it in a tabular manner
- * and present it as a table of comparision with the option to select/remove
- * which Products will be presented in this comparision table
+ * It basically switches between the mobile and the desktop version.
+ * As this page has a relatively "hard straighforward adaptability" from desktop to mobile
+ * I decied to build two different combponents to handle both cases with
+ * theirs specific concerns
  *
  * @returns ProductCompare React component
  */
 export default function ProductCompare() {
-  const { error, selectedProducts } = useProductComparision();
-
-  // If no product is selected, change the title to suggest the user
-  // to start choosing products to compare
-  const title =
-    selectedProducts.length > 0
-      ? selectedProducts.length + " " + "Producten Vergelijken"
-      : "Selecteer de producten";
-
   return (
     <>
       <Content>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-        <H1 className="mt-4 pb-6">{title}</H1>
-
         {/*
          * Product Comparision Table has two versions: Desktop/Tablet and Mobile
          * As the interaction and the structure of the Mobile version is pretty different

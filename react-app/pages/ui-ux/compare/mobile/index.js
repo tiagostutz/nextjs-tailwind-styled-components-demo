@@ -1,10 +1,11 @@
 import Head from "next/head";
-import { faTrashAlt } from "@fortawesome/fontawesome-free-regular";
+import { faLightbulb, faTrashAlt } from "@fortawesome/fontawesome-free-regular";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Content from "../../layout/content";
+import Content from "../../../../layout/content";
+import Link from "next/link";
 
 /**
- * This is a page that has the Product Comparision page coded
+ * This is a page that has the Product Comparision MOBILE page coded
  * in pure HTML/CSS using the Design System tokens.
  *
  * This page is just used for developmental purpose. The actual React components
@@ -18,10 +19,22 @@ import Content from "../../layout/content";
  *
  * @returns UXUICompare React component
  */
-export default function UXUICompare() {
+export default function UXUICompareMobile() {
   return (
     <>
       <Content>
+        <div className="border-l-8 bg-red-200 border-red-600 text-black p-4 mb-10 flex flex-row">
+          <FontAwesomeIcon icon={faLightbulb} width="16" className="mr-2" />{" "}
+          This is just the UI/UX static spec study/chop for the{" "}
+          <span className="font-bold mx-1">Mobile version.</span>
+          For the actual React dynamic version,
+          <Link href="/">
+            <span className="underline text-blue-500 ml-1 cursor-pointer">
+              go to the Home page
+            </span>
+          </Link>
+        </div>
+
         {/* 
           Simulating this code as provided by a HTML/CSS Design System expert or even by a code generator 
           based on a given Design System. In this case, Tailwind is our Design System.

@@ -25,18 +25,4 @@ describe("ResilientImage Element", () => {
     //   unavailableImageBase64 //base64 of /unavailable-image-placeholder.png
     // );
   });
-
-  it("should render the ResilientImage component with the provided src due to a valid image URL provided", async () => {
-    const imageURL = "https://i.stack.imgur.com/exists.png";
-    fetch.mockResponseOnce(imageURL, { status: 200 });
-
-    render(<ResilientImage src={imageURL} height="100" width="100" />);
-
-    const image = screen.getByRole("img");
-    expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute(
-      "src",
-      "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" //base64 of empty image (NextJS)
-    );
-  });
 });
