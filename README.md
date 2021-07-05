@@ -2,6 +2,36 @@
 
 Simple showcase on how to use NextJS with Tailwind and Styled Components.
 
+## Getting Started
+
+To bring the project up and running for development mode, go to de **react-app** folder and
+```bash
+yarn install
+```
+then
+```bash
+yarn run dev
+```
+
+To run the tests:
+```bash
+yarn run test
+```
+
+To run a production preview with static rendering, first you need to build and then start the server:
+```bash
+yarn run build
+```
+then
+```bash
+yarn start
+```
+
+To run using the Docker image:
+```bash
+docker-compose up --build
+```
+
 ## Briefing
 
 Here are some important assumptions made to guide the decisions and designs of the project:
@@ -18,8 +48,6 @@ Here's a summary of some decisions made:
 1. Unit test the more complex components to ease the business rules requirements implementation and provide backwards constraint in refactors and evolutions.
 1. As the interactions are somewhat simple and don't take state change propagation/notification to many levels, we are handling all business logic state and actions using Hooks and Effects at the main component (<ProductCompare /> in compare/index.js) and not using orther third party solutions like Redux, Mobx, Apollo GraphQL and other options out there.
 1. We have a route named `ui-ux` (menu UI/UX) that represents the first step "chopping" the provided design into a pure HTML/CSS Design System page. see [From Mock to Components Pipeline]() section
-
-## Getting Started
 
 ### Where is the root Component?
 

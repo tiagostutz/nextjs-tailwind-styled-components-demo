@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import env from "../../environment";
-import ignoredAttributes from "../../ignoredAttributes.json";
-import { productCache } from "../cache";
+import env from "../environment";
+import ignoredAttributes from "../ignoredAttributes.json";
+import { productCache } from "./cache";
 
 /**
  * Builds an enhanced attributeValues indicating whether there are some difference between the values
@@ -19,7 +19,7 @@ const withHasDifference = (attributesValues) => {
   // among the selected products.
   const enhancedAttributeValues = attributesValues.map((attrVal) => ({
     ...attrVal,
-    hasDifference: attrVal.values
+    hasDifference: !!attrVal.values
       .filter((val) => val.isSelected)
       .find((v) => v.value !== attrVal.values[0].value),
   }));
@@ -71,7 +71,6 @@ export const useProductComparision = () => {
           setAllProducts(cachedProducts);
         }
       } catch (error) {
-        console.error(error);
         setError("Error fetching and transforming the products");
       }
     };
@@ -161,9 +160,11 @@ export const useProductComparision = () => {
     // to present in the comparision table
     selectedProducts = allProducts.filter((prodSel) => prodSel.isSelected);
   }
+  const attributesValuesWithDifferenceMark =
+    withHasDifference(attributesValues);
 
   return {
-    attributesValues,
+    attributesValuesWithDifferenceMark,
     badges,
     error,
     allProducts,
@@ -171,6 +172,5 @@ export const useProductComparision = () => {
     selectProduct,
     unselectProduct,
     toggleProductSelected,
-    withHasDifference,
   };
 };

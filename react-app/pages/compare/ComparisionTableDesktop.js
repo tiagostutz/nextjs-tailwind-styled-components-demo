@@ -1,6 +1,8 @@
 import {
   H1,
   H2,
+  DivTopPadded,
+  DivHorizontalPadded,
   Table,
   TDTopAligned,
   TDBottomAligned,
@@ -12,11 +14,9 @@ import {
   ErrorMessage,
 } from "../../lib/design-system";
 
-import { DivTopPadded, DivHorizontalPadded } from "./DivPadded.style";
-
 import ProductBasicInfo from "./ProductBasicInfo";
 
-import { useProductComparision } from "./useProductComparision";
+import { useProductComparision } from "../../hooks/useProductComparision";
 
 /**
  * It uses the useProductComparision Hook to have the logic to fetch the data,
@@ -30,13 +30,12 @@ import { useProductComparision } from "./useProductComparision";
 export default function ComparisionTableDesktop() {
   const {
     allProducts,
-    attributesValues,
+    attributesValuesWithDifferenceMark,
     badges,
     error,
     selectedProducts,
     toggleProductSelected,
     unselectProduct,
-    withHasDifference,
   } = useProductComparision();
 
   // If no product is selected, change the title to suggest the user
@@ -124,7 +123,7 @@ export default function ComparisionTableDesktop() {
           </tr>
 
           {/* Product attributes in name ascending order table comparision */}
-          {withHasDifference(attributesValues).map((row, idx) => (
+          {attributesValuesWithDifferenceMark.map((row, idx) => (
             <tr key={idx}>
               {/* The "name" attribute must be the first column in the row*/}
               <TDLined highlighted={row.hasDifference} borderRight>

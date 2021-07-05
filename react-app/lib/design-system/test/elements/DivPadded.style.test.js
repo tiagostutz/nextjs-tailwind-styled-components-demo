@@ -1,7 +1,7 @@
 import React from "react";
 import "jest-styled-components";
-import { render, screen } from "../../test-utils";
-import { DivTopPadded } from "../../../pages/compare/DivPadded.style";
+import { render, screen } from "../../../../test/test-utils";
+import { DivTopPadded } from "../../elements/DivPadded.style";
 
 describe("DivPadded Element", () => {
   it("should render the DivPadded styled Component", () => {
