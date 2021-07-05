@@ -42,6 +42,7 @@ Here are some important assumptions made to guide the decisions and designs of t
 1. We rely on good practices of componentization, modularization, SOC, etc, but having the scope of the project in sight to not overegineering things.
 1. Despite the spec presents just a Product Page, let's considerate that this is just part of a medium project and let's build/use a Design System as it was given. That's why it will be built in the "lib" folder, to emulate as if those components were provided by a separated module
 
+We are advancing on test coverage, but currently we are aiming to have tests for all different parts of the application, like design system components, pages and hooks. Currently we have for the design system components and for the hooks that deal with business logic
 
 ## Some Decisions and important information:
 
