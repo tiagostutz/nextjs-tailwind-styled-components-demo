@@ -16,7 +16,7 @@ import { DivPadded } from "./DivPadded.style";
 
 import ProductBasicInfo from "./ProductBasicInfo";
 
-import env from "../../environment";
+import { useProductComparision } from "./useProductComparision";
 
 /**
  *
@@ -28,58 +28,14 @@ import env from "../../environment";
  * @returns ProductCompare React component
  */
 export default function ProductCompare() {
-  /**
-   * Fetched products enhanced with some attributes as the flag indicating
-   * whether they are selected to be presented in the comparision table
-   */
-  const [productsSelection, setProductsSelection] = useState([]);
-
-  const [error, setError] = useState();
-
-  /**
-   * Initial load of the component. Fetch the products.
-   */
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const resp = await fetch(env.productsEndpoint);
-        if (resp.status === 200) {
-          const productsJsonResp = await resp.json();
-          const productsReveivedEnhanced = productsJsonResp.products.map(
-            (prod) => ({
-              ...prod,
-              isSelected: false,
-            })
-          );
-          setProductsSelection(productsReveivedEnhanced);
-        } else if (resp.status === 404) {
-          setError("No products found.");
-        } else {
-          setError("Error fetching the products");
-        }
-      } catch (error) {
-        console.error(error);
-        setError("Error fetching and transforming the products");
-      }
-    };
-    loadData();
-  }, []);
-
-  // -------
-  // Ideally, those functions could be somewhere else, but
-  // as this is a simple component with just a few actions we can leave it here
-
-  /** removes a product from the comparision selection */
-  const unselectProduct = (product) => {
-    product.isSelected = false;
-    setProductsSelection([...productsSelection]);
-  };
-
-  /** removes a product from the comparision selection */
-  const selectProduct = (product) => {
-    product.isSelected = true;
-    setProductsSelection([...productsSelection]);
-  };
+  const {
+    attributesValues,
+    badges,
+    error,
+    productsSelection,
+    selectProduct,
+    unselectProduct,
+  } = useProductComparision();
 
   /** toggle (add/remove) a product from the comparision selection */
   const toggleProductSelected = (sku) => {
@@ -91,23 +47,8 @@ export default function ProductCompare() {
     }
   };
 
-  /**
-   * This transforms the attributes of the products in a tabular way
-   * to be presented in the table above.
-   * Each row corresponds to an attribute, sorted by its `name` attribute
-   * Each column corresponds to the value of the correspondent attribute
-   * for the respective product, following the same order as the `productsSelection`
-   * array to be consistent
-   */
-  const attributesValues = [];
-
-  /**
-   * Badges values of the selected products to be presented in a tabular way,
-   * following the same order as the `productsSelection` array to be consistent
-   */
-  const badges = [];
-
   // filter just the products that has been selected (flag isSelected)
+  // to present in the comparision table
   const filteredProducts = productsSelection.filter(
     (prodSel) => prodSel.isSelected
   );

@@ -6,8 +6,6 @@ import {
   ResilientImage,
 } from "../../lib/design-system";
 
-import { DivPadded } from "./DivPadded.style";
-
 export default function ProductBasicInfo({ onRemove, product }) {
   const remove = () => {
     if (onRemove) {
