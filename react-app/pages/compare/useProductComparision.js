@@ -63,7 +63,7 @@ export const useProductComparision = () => {
             productCache.set("all", productsReveivedEnhanced);
             setAllProducts(productsReveivedEnhanced);
           } else if (resp.status === 404) {
-            setError("No products found.");
+            setError("No products found");
           } else {
             setError("Error fetching the products");
           }

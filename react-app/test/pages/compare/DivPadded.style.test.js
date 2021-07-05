@@ -1,11 +1,11 @@
 import React from "react";
 import "jest-styled-components";
 import { render, screen } from "../../test-utils";
-import { DivPadded } from "../../../pages/compare/DivPadded.style";
+import { DivTopPadded } from "../../../pages/compare/DivPadded.style";
 
 describe("DivPadded Element", () => {
   it("should render the DivPadded styled Component", () => {
-    render(<DivPadded>Test Padded</DivPadded>);
+    render(<DivTopPadded>Test Padded</DivTopPadded>);
 
     const div = screen.getByText(/Test Padded/i);
 
