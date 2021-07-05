@@ -12,6 +12,13 @@ export default function ProductBasicInfo({ onRemove, product }) {
       onRemove(product);
     }
   };
+
+  if (!product) {
+    // if there product hasnt been provided, ideally we would
+    // have a placeholder or something here
+    return <div></div>;
+  }
+
   return (
     <div>
       <div className="mb-4 flex flex-row justify-end items-center">

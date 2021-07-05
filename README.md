@@ -4,11 +4,21 @@ Simple showcase on how to use NextJS with Tailwind and Styled Components.
 
 ## Getting Started
 
-To bring the project up and running for development mode, go to de **react-app** folder and
+First, install all the dependencies:
 ```bash
 yarn install
 ```
+
+Then, build all the stuff to have pre-rendered static resources to have a production version to check:
+```bash
+yarn run build
+```
 then
+```bash
+yarn start
+```
+
+To bring the project up and running for development mode, go to de **react-app** folder and
 ```bash
 yarn run dev
 ```
@@ -18,14 +28,6 @@ To run the tests:
 yarn run test
 ```
 
-To run a production preview with static rendering, first you need to build and then start the server:
-```bash
-yarn run build
-```
-then
-```bash
-yarn start
-```
 
 To run using the Docker image:
 ```bash

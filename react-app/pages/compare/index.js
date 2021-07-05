@@ -1,8 +1,5 @@
-import { H1, ErrorMessage } from "../../lib/design-system";
-
 import Content from "../../layout/content";
 
-import { useProductComparision } from "./useProductComparision";
 import ComparisionTableDesktop from "./ComparisionTableDesktop";
 import ComparisionTableMobile from "./ComparisionTableMobile";
 
