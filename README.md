@@ -34,12 +34,14 @@ To run using the Docker image:
 docker-compose up --build
 ```
 
+
 ## Briefing
 
 Here are some important assumptions made to guide the decisions and designs of the project:
 1. Let's consider that the UI/UX provided by the briefing should be followed with no - or minor - modifications. So, for instance, the more tabular design style used in the design yields us to use a <table/> instead of <Card/>. If the exercise asked for some alternatives on how to build this Product comparision page, maybe we could have some options using <Card>, <div> and other things, but that's not the case. So, most decisions here will be guided towards making the provided design - and spec - with the most fidelity as possible.
 1. We rely on good practices of componentization, modularization, SOC, etc, but having the scope of the project in sight to not overegineering things.
 1. Despite the spec presents just a Product Page, let's considerate that this is just part of a medium project and let's build/use a Design System as it was given. That's why it will be built in the "lib" folder, to emulate as if those components were provided by a separated module
+
 
 ## Some Decisions and important information:
 
@@ -51,11 +53,13 @@ Here's a summary of some decisions made:
 1. As the interactions are somewhat simple and don't take state change propagation/notification to many levels, we are handling all business logic state and actions using Hooks and Effects at the main component (<ProductCompare /> in compare/index.js) and not using orther third party solutions like Redux, Mobx, Apollo GraphQL and other options out there.
 1. We have a route named `ui-ux` (menu UI/UX) that represents the first step "chopping" the provided design into a pure HTML/CSS Design System page. see [From Mock to Components Pipeline]() section
 
+
 ### Where is the root Component?
 
 NextJS is React. So pretty much you will follow the same React path from component to component. But there are some tips to get started:
 1. The top most (root) component of the application is defined in `pages/_app.js`. In some scenarios you don't event need to provide it as you could use the bult-in `next/App`. But in our case we are overriding this because we are importing the **tailwind.css** there to be globally available.
 1. The `pages/index.js` is the "/" component, so in terms of day-by-day development, we can consider this as the root of the application
+
 
 ### Special Files
 
@@ -66,17 +70,22 @@ NextJS is React. So pretty much you will follow the same React path from compone
 
 Router is provided out of the box by React Router. The convention is that the path of the route is the folder name under the **pages** folder.
 
+
 ## Responsiviness
 
 As the interaction format would change 
+
 
 ## Caching
 
 Simple cache has 5kb size. Node-cache has 55kb.
 
+
 ## Design Decisions
 
+
 ### About Design System
+
 
 ### From Mock to Components Pipeline
 
