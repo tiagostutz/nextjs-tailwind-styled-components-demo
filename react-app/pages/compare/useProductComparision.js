@@ -2,6 +2,34 @@ import { useEffect, useState } from "react";
 
 import env from "../../environment";
 import ignoredAttributes from "../../ignoredAttributes.json";
+
+/**
+ * Builds an enhanced attributeValues indicating whether there are some difference between the values
+ * of the SELECTED products
+ *
+ * @param {Array} attributesValues array with the attribute values transformed into tabular
+ */
+const withHasDifference = (attributesValues) => {
+  // return the original object + the hasDifference attribute
+  // to evaluate the hasDifferece, we filter for the selected products,
+  // which are being compared, and check, attribute by attribute whether
+  // there is at least one product with the value different from the first product
+  // because if there is, then there are differences between the respective attribute value
+  // among the selected products.
+  const enhancedAttributeValues = attributesValues.map((attrVal) => ({
+    ...attrVal,
+    hasDifference: attrVal.values
+      .filter((val) => val.isSelected)
+      .find((v) => v.value !== attrVal.values[0].value),
+  }));
+
+  return enhancedAttributeValues;
+};
+
+/**
+ *
+ * @returns React Hook with the page model (data flow and manipulation)
+ */
 export const useProductComparision = () => {
   const [error, setError] = useState();
 
@@ -9,7 +37,7 @@ export const useProductComparision = () => {
    * Fetched products enhanced with some attributes as the flag indicating
    * whether they are selected to be presented in the comparision table
    */
-  const [productsSelection, setProductsSelection] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
   /**
    * Initial load of the component. Fetch the products.
@@ -28,7 +56,7 @@ export const useProductComparision = () => {
               isSelected: false,
             })
           );
-          setProductsSelection(productsReveivedEnhanced);
+          setAllProducts(productsReveivedEnhanced);
         } else if (resp.status === 404) {
           setError("No products found.");
         } else {
@@ -45,13 +73,23 @@ export const useProductComparision = () => {
   /** removes a product from the comparision selection */
   const unselectProduct = (product) => {
     product.isSelected = false;
-    setProductsSelection([...productsSelection]);
+    setAllProducts([...allProducts]);
   };
 
   /** removes a product from the comparision selection */
   const selectProduct = (product) => {
     product.isSelected = true;
-    setProductsSelection([...productsSelection]);
+    setAllProducts([...allProducts]);
+  };
+
+  /** toggle (add/remove) a product from the comparision selection */
+  const toggleProductSelected = (sku) => {
+    const product = allProducts.find((p) => p.sku === sku);
+    if (product.isSelected) {
+      unselectProduct(product);
+    } else {
+      selectProduct(product);
+    }
   };
 
   /**
@@ -59,18 +97,20 @@ export const useProductComparision = () => {
    * to be presented in the table above.
    * Each row corresponds to an attribute, sorted by its `name` attribute
    * Each column corresponds to the value of the correspondent attribute
-   * for the respective product, following the same order as the `productsSelection`
+   * for the respective product, following the same order as the `allProducts`
    * array to be consistent
    */
   let attributesValues = []; //ignoredAttributes.json
 
   /**
    * Badges values of the selected products to be presented in a tabular way,
-   * following the same order as the `productsSelection` array to be consistent
+   * following the same order as the `allProducts` array to be consistent
    */
   let badges = [];
 
-  if (productsSelection.length > 0) {
+  let selectedProducts = [];
+
+  if (allProducts.length > 0) {
     // removes "badges" attribute because will handle separately
     // and removes "isSelected" attribute because it is a helper flag only, to indicate
     // whether the product has been selected to be compared or not
@@ -80,7 +120,7 @@ export const useProductComparision = () => {
     // are present in the ignoredAttributes.json file. Get the candidate attributes
     // present in the result object from fetch filtering out those that
     // must be ignored, present in the ignoredAttributes.json file
-    const allowedAttributes = Object.keys(productsSelection[0]).filter(
+    const allowedAttributes = Object.keys(allProducts[0]).filter(
       (key) => !ignoredAttributesAug.find((igAtt) => igAtt === key)
     );
 
@@ -88,7 +128,7 @@ export const useProductComparision = () => {
     // for each product (array of values) in the same order they were fetched
     attributesValues = allowedAttributes.map((attrAllowed) => ({
       name: attrAllowed,
-      values: productsSelection.map((ps) => ({
+      values: allProducts.map((ps) => ({
         //the value is composed by the attribute in the product with its related "sku" for traceability and uniqueness (ID)
         value: ps[attrAllowed],
         sku: ps.sku,
@@ -101,7 +141,7 @@ export const useProductComparision = () => {
       a.name.localeCompare(b.name)
     );
 
-    badges = productsSelection.map((ps) => ({
+    badges = allProducts.map((ps) => ({
       // the badges attribute is a string containing a lista of URLs separated by pipe
       // split the pipe to return a list as a JS object
       urls: ps.badges.split(/\|/gi),
@@ -109,14 +149,21 @@ export const useProductComparision = () => {
       isSelected: ps.isSelected,
     }));
     console.log(badges);
+
+    // filter just the products that has been selected (flag isSelected)
+    // to present in the comparision table
+    selectedProducts = allProducts.filter((prodSel) => prodSel.isSelected);
   }
 
   return {
     attributesValues,
     badges,
     error,
-    productsSelection,
+    allProducts,
+    selectedProducts,
     selectProduct,
     unselectProduct,
+    toggleProductSelected,
+    withHasDifference,
   };
 };

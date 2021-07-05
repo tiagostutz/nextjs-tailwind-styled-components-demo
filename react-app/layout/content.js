@@ -12,7 +12,7 @@ export default function Content({ children }) {
   return (
     <>
       <Navbar />
-      <main className="container mx-auto max-w-screen-lg pt-8 px-4">
+      <main className="container mx-auto max-w-screen-xl pt-8 px-4">
         {/* Main content */}
         {children}
       </main>

@@ -36,6 +36,10 @@ NextJS is React. So pretty much you will follow the same React path from compone
 
 Router is provided out of the box by React Router. The convention is that the path of the route is the folder name under the **pages** folder.
 
+## Responsiviness
+
+As the interaction format would change 
+
 ## Design Decisions
 
 ### About Design System
