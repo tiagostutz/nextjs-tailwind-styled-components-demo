@@ -50,7 +50,7 @@ Here are some important assumptions made to guide the design and some decisions 
 1. We rely on good practices of componentization, modularization, SOC, etc, but having the scope of the project in sight to not over-engineering things.
 1. Despite the spec presents just a Product Page, let's consider that this is just part of a medium project and let's build/use a Design System as it was given. That's why it will be built in the "lib" folder, to emulate as if those components were provided by a separated module
 
-We are advancing on test coverage, but currently we are aiming to have tests for all different parts of the application, like design system components, pages and hooks. Currently we have for the design system components and for the hooks that deal with business logic
+We are advancing on test coverage, but currently we are aiming to have tests for all different parts of the application, like design system components, pages and hooks. Currently we have tests just for the design system components and for the hooks that deal with business logic.
 
 
 ## Some Decisions and important information:
@@ -58,10 +58,10 @@ We are advancing on test coverage, but currently we are aiming to have tests for
 Here's a summary of some decisions made: 
 1. Use a Design System: see [About Design System]() section
 1. Build the Design System using another battle-tested Design System - [TailwindCSS](https://tailwindcss.com/docs) - combined with [styled-components](https://styled-components.com/)
-1. Unit test the Design System elementary (element) components just to prevent they don't have positioning and spacing styles and as a kind of "TDD for design" in which we expect on the test some tokens to be present base on the Mock overview
-1. Unit test the more complex components to ease the business rules requirements implementation and provide backwards constraint in refactors and evolutions.
+1. Unit test the Design System elementary (element) components just to prevent they don't have positioning and spacing styles and as a kind of "TDD for design" in which we expect on the test some tokens to be present based on the Mock overview
+1. Unit test the more complex components to ease the business rules requirements implementation and provide backwards constraints when doing refatorings or future evolutions in the codebase.
 1. As the interactions are somewhat simple and don't take state change propagation/notification to many levels, we are handling all business logic state and actions using Hooks and Effects at the main component (`<ProductCompare />` in compare/index.js) and not using orther third party solutions like Redux, Mobx, Apollo GraphQL and other options out there.
-1. We have a route named `ui-ux` (menu UI/UX) that represents the first step "chopping" the provided design into a pure HTML/CSS Design System page. see [From Mock to Components Pipeline]() section
+1. We have a route named `ui-ux` (menu UI/UX) that represents the first step "chopping" the provided design into a pure HTML/CSS Design System page. See [From Mock to Components Pipeline]() section
 
 
 ### About Design System
