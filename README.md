@@ -6,7 +6,7 @@ Simple showcase on how to use NextJS with Tailwind and Styled Components.
 
 <img src="product-comparision-mock.png" alt="design of product comparing page"/>
 
-## How is the solutions looking like?
+## How is the solution looking like?
 
 **Desktop:**
 
@@ -45,10 +45,10 @@ yarn run test
 
 ## Briefing
 
-Here are some important assumptions made to guide the decisions and designs of the project:
+Here are some important assumptions made to guide the design and some decisions of the project:
 1. Let's consider that the UI/UX provided by the briefing should be followed with no - or minor - modifications. So, for instance, the more tabular design style used in the design yields us to use a `<table/>` instead of `<Card/>`. If the exercise asked for some alternatives on how to build this Product comparision page, maybe we could have some options using `<Card>`, `<div>` and other things, but that's not the case. So, most decisions here will be guided towards making the provided design - and spec - with the most fidelity as possible.
 1. We rely on good practices of componentization, modularization, SOC, etc, but having the scope of the project in sight to not over-engineering things.
-1. Despite the spec presents just a Product Page, let's considerate that this is just part of a medium project and let's build/use a Design System as it was given. That's why it will be built in the "lib" folder, to emulate as if those components were provided by a separated module
+1. Despite the spec presents just a Product Page, let's consider that this is just part of a medium project and let's build/use a Design System as it was given. That's why it will be built in the "lib" folder, to emulate as if those components were provided by a separated module
 
 We are advancing on test coverage, but currently we are aiming to have tests for all different parts of the application, like design system components, pages and hooks. Currently we have for the design system components and for the hooks that deal with business logic
 
