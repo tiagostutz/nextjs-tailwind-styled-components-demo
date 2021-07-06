@@ -1,6 +1,6 @@
 export { H1, H1Mobile } from "./elements/H1.style";
 export { H2 } from "./elements/H2.style";
-export { H3 } from "./elements/H3.style";
+export { H3, H3Mobile } from "./elements/H3.style";
 export { Table } from "./elements/Table.style";
 export {
   TD,
