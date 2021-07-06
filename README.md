@@ -43,12 +43,6 @@ yarn run test
 ```
 
 
-To run using the Docker image:
-```bash
-docker-compose up --build
-```
-
-
 ## Briefing
 
 Here are some important assumptions made to guide the decisions and designs of the project:
@@ -70,6 +64,14 @@ Here's a summary of some decisions made:
 1. We have a route named `ui-ux` (menu UI/UX) that represents the first step "chopping" the provided design into a pure HTML/CSS Design System page. see [From Mock to Components Pipeline]() section
 
 
+### About Design System
+
+
+### From Mock to Components Pipeline
+
+- Based on this page the React componentization with Styled-Components and Composite components start.
+- The mobile card scroller is a good example of taking a high skilled person in CSS and get things done fast to validate. After validated, go to styled-components
+
 ### Where is the root Component?
 
 NextJS is React. So pretty much you will follow the same React path from component to component. But there are some tips to get started:
@@ -77,7 +79,7 @@ NextJS is React. So pretty much you will follow the same React path from compone
 1. The `pages/index.js` is the "/" component, so in terms of day-by-day development, we can consider this as the root of the application
 
 
-### Special Files
+### Special NextJS Files
 
 - _app.js
 - _document.js
@@ -94,16 +96,6 @@ As the interaction format would change
 
 ## Caching
 
-Simple cache has 5kb size. Node-cache has 55kb.
+In the hook logic we use a tiny simple cache solution, called **"simple.cache"**.
+As we need something really simple, simple.cache was a great discovery, having just 5kb of size. Just for the sake of comparasion, node-cache has 55kb.
 
-
-## Design Decisions
-
-
-### About Design System
-
-
-### From Mock to Components Pipeline
-
-- Based on this page the React componentization with Styled-Components and Composite components start.
-- The mobile card scroller is a good example of taking a high skilled person in CSS and get things done fast to validate. After validated, go to styled-components
