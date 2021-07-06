@@ -67,7 +67,7 @@ Here's a summary of some decisions made:
 ### About Design System
 
 When you have a Design System, it becomes faster to build new pages and components, but building and evolving a Design System is a interesting tough job. In this exercise I tried to simulate like if we already had a Design System for Desktop resolutions but not for mobile and we were working on that.
-- The first thing to notice about this exercise is that when you don't have a Design System fully defined yet it is a good idea to start defining it with the good old CSS. After implementing and validating this Design System, we can go to the good and fancy styled-components, because the people working in the Design System definition and tokens does not necessarily knows styled-components and the Design System doesn't need to be used only by React applications. Honestly, a Design Systema needs first to be written in pure CSS to be available to any HTML/CSS technology.
+- The first thing to notice about this exercise is that when you don't have a Design System fully defined yet it is a good idea to start defining it with the good old CSS. After implementing and validating this Design System, we can go to the good and fancy styled-components, because the people working in the Design System definition and tokens does not necessarily knows styled-components and the Design System doesn't need to be used only by React applications. Honestly, a Design System needs first to be written in pure CSS to be available to any HTML/CSS technology.
 - The second lesson here is that it is a good ideia to start with a consolidated Design System as a base. I chose Tailwind for the following reasons:
     - Awesome aesthic out of the box, with balanced colors, shades, font size proportion, space proportion and so on
     - Great granularity and options of styling and allowing us to build our Design System on top of that
@@ -75,18 +75,18 @@ When you have a Design System, it becomes faster to build new pages and componen
     - Good and solid documentation
     - Awesome community support and adoption
     - Easy for HTML5/CSS developers that might not have fluency with React to colaborate
-- When having a Design System, the user have this smooth transition between evolving pages and components. For instance, if you check the Desktop and the Mobile page you will see that they have some differences, because it was like the Desktop page is using a v1.1.0 of the Design System and the mobile is using a v1.3.0
+- When interacting with a Design System based UI, the user have this smooth transition between evolving pages and components. For instance, if you check the Desktop and the Mobile page you will see that they have some differences, because it was like the Desktop page is using a v1.1.0 of the Design System and the mobile is using a v1.3.0
 - The mobile doesn't have a Design System and don't have styled-components yet because it is simulating as if it was on the validation/maturation phase
-- In the Design System components we should avoid putting attributes that affects positioning of the elements. That's why I implemented unit tests for those components that assure they don't have thouse kind of attributes (like margin, float, etc)
+- In the Design System components we should avoid putting attributes that affects positioning of the elements. That's why I implemented unit tests for those components that assure they don't have those kind of attributes (like margin, float, etc)
 
 ### TailwindCSS vs Styled-Components? Not really..
 
 I tried in this approach to use a module named `tailwind-styled-components` which helps us to build styled-components but with Tailwind tokens. We can check whether we could improve it by inspecting TailwindCSS tokens and building the native styled-components with those values.
-I think we have space for both Tailwind and Styled-Compoents in the project. Styled-components is a great choice for the components of your Design System that are already consolidated and battle-teste. Its more a scale thing. Tailwind is great to fill the gaps you may have on your Styled-Components empowered Design System and to try new things to evolve your Design System that you will eventually discard on the process.
+I think we have space for both Tailwind and Styled-Compoents in the project. Styled-components is a great choice for the components of your Design System that are already consolidated and battle-tested. It's more a scalable thing. Tailwind is great to fill the gaps you may have on your Styled-Components empowered Design System and to try new things to evolve your Design System that will eventually get discarded on the process.
 
 ### Responsiviness and Mobile
 
-When dealing with responsive design we must decide whether the mobile interaction can be done just with some `@media queries` and minor adaptations in the structure that serves the Desktop version or if we need a separate structure (component) for the mobile experience. In this case, I chose to build a new structure for the Mobile, but yet, using some of the Design System components. That what made the mobile design and experience a bit difference, but very acquainted.
+When dealing with responsive design we must decide whether the mobile interaction can be done just with some `@media queries` and minor adaptations in the structure that serves the Desktop version or if we need a separate structure (component) for the mobile experience. In this case, I chose to build a new structure for the Mobile, but yet, using some of the Design System components. That made the mobile design and experience a bit difference, but very acquainted.
 PS - Just remembering the rule of thumb: if you are presenting something new to the user, try to make it familiar. If you are presenting something that is legacy, bring some little news to it. Design System helps a lot with this.
 
 ### From Mock to Components Pipeline
@@ -100,7 +100,7 @@ The process of implementation had the following steps:
 1. After this first round of componentization, start to build the React powered page, filling the gaps with new components if necessary or event then with CSS Design System tokens (Tailwind CSS classes)
 1. After getting the components done and the look and feel of the page just like what we were looking for, start dealing with business logic
 1. Evaluate whether the business logic is complex or simple, if involves state and data propagation and flow, deep propagation and flow. If that's the case, choose a state management solution. If not, go with in-component logic or with Hooks.
-    - I decied to create a Hook to handle the business logic because it wasn't that complex and could be very isolated with just one Hook
+    - I decided to create a Hook to handle the business logic because it wasn't that complex and could be very isolated with just one Hook
     - This Hook is used by both Desktop and Mobile component with no modifications
     - The mobile needed to handle some transformation on the data. That's something to think about and improve.
 
@@ -126,7 +126,7 @@ Router is provided out of the box by React Router. The convention is that the pa
 ## Caching
 
 In the hook logic we use a tiny simple cache solution, called **"simple.cache"**.
-As we need something really simple, simple.cache was a great discovery, having just 5kb of size. Just for the sake of comparasion, node-cache has 55kb.
+As we need something really simple, simple.cache was a great discovery, having just 5kb of size. Just for the sake of comparison, node-cache has 55kb.
 
 
 ## Dependencies
