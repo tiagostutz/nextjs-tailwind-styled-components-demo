@@ -1,12 +1,19 @@
 import tw from "tailwind-styled-components";
 
-export const H1 = tw.h1`
+const H1Base = tw.h1`
     flex 
     justify-start 
     items-center 
-    border-b 
     border-gray-200 
     text-3xl 
     text-blue-700 
     font-bold
+`;
+
+export const H1 = tw(H1Base)`
+    border-b 
+`;
+
+export const H1Mobile = tw(H1Base)`
+    justify-between
 `;

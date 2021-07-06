@@ -1,4 +1,4 @@
-export { H1 } from "./elements/H1.style";
+export { H1, H1Mobile } from "./elements/H1.style";
 export { H2 } from "./elements/H2.style";
 export { H3 } from "./elements/H3.style";
 export { Table } from "./elements/Table.style";
