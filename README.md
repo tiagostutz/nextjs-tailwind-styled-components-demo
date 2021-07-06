@@ -128,3 +128,12 @@ Router is provided out of the box by React Router. The convention is that the pa
 In the hook logic we use a tiny simple cache solution, called **"simple.cache"**.
 As we need something really simple, simple.cache was a great discovery, having just 5kb of size. Just for the sake of comparasion, node-cache has 55kb.
 
+
+## Dependencies
+
+This project has two big dependencies: NextJS and Tailwind. But the have a robust tooling that handles the running and building/packaging job, with minor adjustments.
+Besides those two, we have:
+- **styled-components** for building our Design System and other components in React
+- **@fortawesome** for this icons
+- **simple.cache** for caching fetch requests and avoid request rush between Desktop and Mobile component. This is a really tiny (5kb) and stable module.
+- We have dev dependencies for testing, mocking fetch and rendering React components
