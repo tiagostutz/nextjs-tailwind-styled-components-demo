@@ -41,6 +41,10 @@ export default function UXUICompareMobile() {
         {/* 
           Simulating this code as provided by a HTML/CSS Design System expert or even by a code generator 
           based on a given Design System. In this case, Tailwind is our Design System.
+
+          Despite of that, in this case we have a special scenario which is the "slider" implemented using
+          a custom CSS because our base Design System (Tailwind) doesn't have this "feature".
+
         */}
         <div className="max-w-sm">
           <h1 className="flex justify-between items-center mt-4 text-3xl text-blue-700 font-bold border border-gray-200 p-2">
@@ -120,7 +124,7 @@ export default function UXUICompareMobile() {
 
                   {/* Badges */}
                   <div className="pb-4">
-                    <div className="flex flex-row">
+                    <div className="flex flex-row justify-center">
                       <img
                         src="https://cdn1.iconfinder.com/data/icons/leto-awards/64/__award_badge-128.png"
                         width="32"
@@ -204,7 +208,7 @@ export default function UXUICompareMobile() {
 
                   {/* Badges */}
                   <div className="pb-4">
-                    <div className="flex flex-row">
+                    <div className="flex flex-row justify-center">
                       <img
                         src="https://cdn1.iconfinder.com/data/icons/leto-awards/64/__award_badge-128.png"
                         width="32"
@@ -288,7 +292,7 @@ export default function UXUICompareMobile() {
 
                   {/* Badges */}
                   <div className="pb-4">
-                    <div className="flex flex-row">
+                    <div className="flex flex-row justify-center">
                       <img
                         src="https://cdn1.iconfinder.com/data/icons/leto-awards/64/__award_badge-128.png"
                         width="32"
