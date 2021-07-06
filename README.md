@@ -6,6 +6,16 @@ Simple showcase on how to use NextJS with Tailwind and Styled Components.
 
 <img src="product-comparision-mock.png" alt="design of product comparing page"/>
 
+## How is the solutions looking like?
+
+**Desktop:**
+
+![Desktop Navigation](desktop-navigation.gif)
+
+**Mobile:**
+
+![Mobile Navigation](mobile-navigation.gif)
+
 ## Getting Started
 
 First, install all the dependencies:
