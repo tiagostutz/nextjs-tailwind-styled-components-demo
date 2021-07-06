@@ -2,6 +2,10 @@
 
 Simple showcase on how to use NextJS with Tailwind and Styled Components.
 
+**Provided design of the page to be crafted**
+
+<img src="product-comparision-mock.png" alt="design of product comparing page"/>
+
 ## Getting Started
 
 First, install all the dependencies:
